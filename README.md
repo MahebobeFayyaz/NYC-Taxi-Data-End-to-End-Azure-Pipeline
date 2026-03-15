@@ -42,10 +42,10 @@ Stores cleaned and transformed datasets in **Parquet format**.
 
 ### Gold Layer
 Stores curated datasets and Delta tables optimized for analytics and reporting.
-
+<img src="Images/storage_account.png"  />
 # Pipeline Workflow
 
-<img src="YOUR_ARCHITECTURE_IMAGE" />
+
 
 ## Data Ingestion using Azure Data Factory
 Azure Data Factory is used to dynamically download Green Taxi Trip data from the HTTP source and load it into the Bronze layer of the Data Lake.
@@ -56,7 +56,7 @@ Two linked services are created:
 * Source: HTTP (NYC Taxi Data Website)
 * Destination: Azure Data Lake Storage Gen2
 
-<img src="" />
+
 
 ### Data Factory Pipeline
 A pipeline is created to download the Green Taxi Trip dataset and load it into the Bronze layer.
@@ -69,11 +69,11 @@ Pipeline Flow:
 
 Pipeline Name: **myWebDL**
 
-<img src="YOUR_PIPELINE_IMAGE" />
+<img src="Images/adf.png" />
 
 The file **green_tripdata_01.parquet** is successfully imported into the Data Lake.
 
-<img src="YOUR_IMPORTED_FILE_IMAGE" />
+
 
 ### Dynamic File Download
 To download taxi trip data for all months:
@@ -81,8 +81,8 @@ To download taxi trip data for all months:
 * ForEach Activity is used to iterate through months
 * IF Condition checks file availability
 * Copy Activity loads available files into Bronze layer
+<img src="Images/trip_data.png" />
 
-<img src="YOUR_FOREACH_ACTIVITY_IMAGE" />
 
 # Databricks Data Processing
 
@@ -101,15 +101,14 @@ Required credentials:
 * Directory (Tenant) ID
 * Client Secret Key
 
-<img src="YOUR_ENTRA_ID_IMAGE" />
+
 
 ## Create Databricks Workspace
 A Databricks workspace and compute cluster are created to run transformation jobs.
 
-Workspace Structure:
-
-<img src="YOUR_DATABRICKS_CLUSTER_IMAGE" />
-
+* silver_notebook
+* gold_notebook
+* 
 # Bronze to Silver Transformation
 Raw data from the Bronze layer is processed in Databricks using **PySpark and SQL**.
 
@@ -118,18 +117,18 @@ Transformations performed:
 * Schema validation
 * Data cleaning
 * Column selection and formatting
-* Handling missing values
+
 
 The transformed data is stored in the **Silver Layer in Delta format**.
 
-<img src="YOUR_SILVER_LAYER_IMAGE" />
+
 
 # Silver to Gold Transformation
 The curated dataset is created from the Silver layer and stored in the Gold layer as **Delta Tables**.
 
 The Gold layer contains analytics-ready data that can be directly used for reporting and business intelligence.
 
-<img src="YOUR_GOLD_LAYER_IMAGE" />
+
 
 # Power BI Integration
 The final Gold layer dataset is connected to Power BI for visualization and analytics.
@@ -141,7 +140,7 @@ This allows users to analyze:
 * Pickup and drop-off insights
 * Monthly trip statistics
 
-<img src="YOUR_POWERBI_IMAGE" />
+
 
 # Tech Stack
 
